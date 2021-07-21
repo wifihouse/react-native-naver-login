@@ -51,7 +51,7 @@ public class RNNaverLoginModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void logout() {
     if (mOAuthLoginModule != null) {
-      mOAuthLoginModule.logout(reactContext);
+      mOAuthLoginModule.logoutAndDeleteToken(reactContext);
     }
   }
 
@@ -59,7 +59,7 @@ public class RNNaverLoginModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void logoutWithCallback(final Callback cb) {
     try {
-      mOAuthLoginModule.logout(reactContext);
+      mOAuthLoginModule.logoutAndDeleteToken(reactContext);
       cb.invoke(null, true);
     } catch (Exception e) {
       cb.invoke(e.getMessage(), null);
